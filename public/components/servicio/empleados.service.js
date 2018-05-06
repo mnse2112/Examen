@@ -48,7 +48,35 @@
         }
 
         function _getEmpleado() {
+            let empleadosListTemp = [],
+                empleadosLista = [];
 
+            let peticion = $.ajax({
+                url: 'http://localhost:4000/api/get_all_users',
+                type: 'get',
+                contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+                dataType: 'json',
+                async: false,
+                data: {}
+            });
+
+            peticion.done((res) => {
+                empleadosListTemp = res;
+            });
+
+            peticion.fail((error) => {
+                empleadosListTemp = [];
+                console.log(error);
+            });
+
+            if (empleadosListTemp != []) {
+                empleadosListTemp.forEach(obj => {
+                    let tempEmpleado = Object.assign(new Empleado(), obj);
+                    empleadosLista.push(tempEmpleado);
+                })
+            }
+
+            return empleadosLista;
         }
     }
 

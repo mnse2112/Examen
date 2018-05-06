@@ -61,15 +61,15 @@
                 controllerAs: 'vm'
             })
 
-            .state('main.listar', {
-                url: '/listas',
-                templateUrl: './components/empleados/listarEmpleado/listarCliente.view.html',
+            .state('main.listaDeEmpleados', {
+                url: '/listarEmpleados',
+                templateUrl: './components/empleados/listarEmpleado/listarEmpleado.view.html',
                 data: {
                     pageTitle: 'randajad'
                 },
                 resolve: {
                     load: ['$ocLazyLoad', ($ocLazyLoad) => {
-                        return $ocLazyLoad.load('./components/empleados/listarEmpleado/listarCliente.controller.js')
+                        return $ocLazyLoad.load('./components/empleados/listarEmpleado/listarEmpleado.controller.js')
                     }]
                 },
                 controller: 'controladorlistaEmpleados',

@@ -1,36 +1,32 @@
 <section>
         <div class="mt-5 mb-0">
-            <div class="col-md-12 mb-5">
-                    <a href="" ui-sref="main.home" class="text-black link mt-5 ml-3">
-                            <i class="fas fa-chevron-left"></i>
-                            <strong>Volver</strong>
-                        </a>   
+            <div class="col-md-12 mb-5"> 
                 <h1 id="tituloPrincipal" class="mt-1">Lista de Usuarios</h1>
-                <p class="texto-muted">Lista de usuarios registrados dentro de The Station</p>
+                <p class="texto-muted">Lista de empleados en Randajad</p>
             </div>
         </div>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        <th scope="col">Fotografía</th>
                         <th scope="col">Número de cédula</th>
-                        <th scope="col">Primer Nombre</th>
-                        <th scope="col">Primer Apellido</th>
-                        <th scope="col">Segundo Apellido</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Fecha de nacimiento</th>
+                        <th scope="col">Edad</th>
                         <th scope="col">Correo electrónico</th>
-                        <th scope="col">Tipo usuario</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="usuario in vm.listaEmpleados">
+                        <td><img src="{{usuario.getFoto()}}" alt="" width="200"></td>
                         <td>{{usuario.getCedula()}}</td>
-                        <td>{{usuario.getPrimerNombre()}}</td>
-                        <td>{{usuario.getPrimerApellido()}}</td>
-                        <td>{{usuario.getSegundoApellido()}}</td>
+                        <td>{{usuario.getnombre()}}</td>
+                        <td>{{usuario.getFecha() | date:'dd MMM yyyy'}}</td>
+                        <td>{{usuario.getEdad()}}</td>
                         <td>
                             <a href="">{{usuario.getCorreo()}}</a>
                         </td>
-                        <td>{{usuario.getTipoRol()}}</td>
                     </tr>
                 </tbody>
             </table>

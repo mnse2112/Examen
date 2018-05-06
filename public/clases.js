@@ -9,7 +9,10 @@ class Empleado {
         this.estado = pestado;
     }
 
-
+    getEmpleado(){
+        return this.Empleado;
+    }
+ 
     getCorreo() {
         return this.correo;
     }
@@ -39,7 +42,7 @@ class Empleado {
         fechaActual.setMonth(mes);
         fechaActual.setFullYear(año);
 
-        edad = Math.floor(((fechaActual - fechaNacimiento) / (1000 * 60 * 60 * 24) / 365));
+        let edad = Math.floor(((fechaActual - fechaNacimiento) / (1000 * 60 * 60 * 24) / 365));
 
         return edad;
     }
