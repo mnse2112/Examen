@@ -5,7 +5,6 @@ var EmpleadoSchema = new mongoose.Schema({
     nombre          : {type: String, required: true},
     foto            : {type: String, required: true},
     fecha           : {type: Date, required: true},
-    edad            : {type: Date},
     correo          : {type: String, required: true},
     contrasenna     : {type: String, required: true},
     estado          : {type: String, required: true}

@@ -7,7 +7,7 @@ const express = require('express'),
       mongoose = require('mongoose');
 
 let db = mongoose.connection,
-    dburl = 'mongodb://monse:123@ds119489.mlab.com:19489/hoteles',
+    dburl = 'mongodb://admin:admin123@ds115340.mlab.com:15340/randajad',
     port = 4000;
 
 let server = app.listen(port,_server());
@@ -35,11 +35,11 @@ app.use( (req, res, next) => {
 });
 
 const index = require('./index'),
-      usuario = require('./components/user/user.route'),
+      user = require('./components/user/user.route'),
       tareas = require('./components/tarea/tarea.route');
 
 app.use('/api', tareas);
-app.use('/api', usuario);
+app.use('/api', user);
 app.use('/', index);
 
 module.exports = app;

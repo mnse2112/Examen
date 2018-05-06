@@ -1,6 +1,6 @@
 const mongoose = require('mongoose'),
       states = ['pendiente', 'en curso', 'realizado'],
-      prioridad = ['urgente', 'normal'];
+      prioridad = ['Alta', 'Media', 'Baja'];
 
 var TareaSchema = new mongoose.Schema({
     'nombreTarea'     : { type: String, required: true },
