@@ -19,7 +19,7 @@ router.route('/get_all_tareas')
 
 router.route('/update_tarea')
   .put((req, res) => {
-    tareas.updateHotel(req,res);
+    tareas.updateTarea(req,res);
 });
 
 router.route('/get_tareas_por_usuario')

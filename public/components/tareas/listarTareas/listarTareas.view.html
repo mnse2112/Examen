@@ -25,6 +25,7 @@
                         <th>Costo</th>
                         <th>Proyecto</th>
                         <th>Encargado</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,7 +38,9 @@
                         <td>${{Tarea.getCosto()}}</td>
                         <td>{{Tarea.getIdProyecto()}}</td>
                         <td>{{Tarea.getNombreUsuario()}}</td>
-    
+                        <td>
+                            <button class="btn btn-primary" ng-click="vm.modificarTarea(Tarea._id)">Modificar Tarea</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>

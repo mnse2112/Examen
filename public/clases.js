@@ -115,27 +115,7 @@ class Tarea {
     }
 
     getIdProyecto() {
-        let idProyecto = this.idProyecto,
-            nombreProyecto = '';
-
-        switch (idProyecto) {
-            case '1':
-                nombreProyecto = 'Sitio web para Tosty';
-                break;
-
-            case '2':
-                nombreProyecto = 'Aplicación web para Necrohana';
-                break;
-
-            case '3':
-                nombreProyecto = 'Lanzamiento de Sailor Moon S';
-                break;
-
-            default:
-                nombreProyecto = 'Sitio web para la película “Chancleta”';
-                break;
-        }
-        return nombreProyecto;
+        return  this.idProyecto;
     }
 
     getIdUsuario() {

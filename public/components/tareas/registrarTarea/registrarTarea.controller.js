@@ -48,7 +48,7 @@
         vm.registrerTarea = (pnuevatarea) => {
             pnuevatarea._id = 0;
             pnuevatarea.prioridad = pnuevatarea.prioridad.name;
-            pnuevatarea.idProyecto = pnuevatarea.idProyecto.id;
+            pnuevatarea.idProyecto = pnuevatarea.idProyecto.name;
             let tempTarea = Object.assign(new Tarea(), pnuevatarea);
             console.log(tempTarea);
 

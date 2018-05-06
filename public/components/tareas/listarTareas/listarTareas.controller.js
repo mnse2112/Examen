@@ -25,6 +25,10 @@
             vm.listarUsuariosDesactivados = tareasService.obtenerListaPorEstados(false);
         }
 
+        vm.modificarTarea = (idTarea) => {
+            $state.go('main.modificarTarea', {idTarea: idTarea});
+        }
+
         vm.desactivaTareas = (tareas) => {
             tareas.setEstado(false);
 

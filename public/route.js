@@ -61,42 +61,6 @@
                 controllerAs: 'vm'
             })
 
-            .state('main.registrarTarea', {
-                url: '/registroTarea',
-                templateUrl: './components/tareas/registrarTarea/registrarTarea.view.html',
-                data: {
-                    pageTitle: 'randajad'
-                },
-                params: {
-                    idUsuario: ''
-                },
-                resolve: {
-                    load: ['$ocLazyLoad', ($ocLazyLoad) => {
-                        return $ocLazyLoad.load('./components/tareas/registrarTarea/registrarTarea.controller.js')
-                    }]
-                },
-                controller: 'registroTareasController',
-                controllerAs: 'vm'
-            })
-
-            .state('main.listadoTareas', {
-                url: '/listaTareas',
-                templateUrl: './components/tareas/listarTareas/listarTareas.view.html',
-                data: {
-                    pageTitle: 'randajad'
-                },
-                params: {
-                    idUsuario: ''
-                },
-                resolve: {
-                    load: ['$ocLazyLoad', ($ocLazyLoad) => {
-                        return $ocLazyLoad.load('./components/tareas/listarTareas/listarTareas.controller.js')
-                    }]
-                },
-                controller: 'controladorListaTareas',
-                controllerAs: 'vm'
-            })
-
             .state('main.listadoEmpleadosDeshabilitados', {
                 url: '/listaEmpleadosDeshabilitados',
                 templateUrl: './components/empleados/listarDeshabilitados/listarDeshabilitados.view.html',
@@ -133,9 +97,61 @@
                 controllerAs: 'vm'
             })
 
+            .state('main.registrarTarea', {
+                url: '/registroTarea',
+                templateUrl: './components/tareas/registrarTarea/registrarTarea.view.html',
+                data: {
+                    pageTitle: 'randajad'
+                },
+                params: {
+                    idUsuario: ''
+                },
+                resolve: {
+                    load: ['$ocLazyLoad', ($ocLazyLoad) => {
+                        return $ocLazyLoad.load('./components/tareas/registrarTarea/registrarTarea.controller.js')
+                    }]
+                },
+                controller: 'registroTareasController',
+                controllerAs: 'vm'
+            })
+
+            .state('main.listadoTareas', {
+                url: '/listaTareas',
+                templateUrl: './components/tareas/listarTareas/listarTareas.view.html',
+                data: {
+                    pageTitle: 'randajad'
+                },
+                params: {
+                    idUsuario: ''
+                },
+                resolve: {
+                    load: ['$ocLazyLoad', ($ocLazyLoad) => {
+                        return $ocLazyLoad.load('./components/tareas/listarTareas/listarTareas.controller.js')
+                    }]
+                },
+                controller: 'controladorListaTareas',
+                controllerAs: 'vm'
+            })
+
+            .state('main.modificarTarea', {
+                url: '/modificarTarea',
+                templateUrl: './components/tareas/modificarTareas/modificarTareas.view.html',
+                data: {
+                    pageTitle: 'randajad'
+                },
+                params: {
+                    idTarea: ''
+                },
+                resolve: {
+                    load: ['$ocLazyLoad', ($ocLazyLoad) => {
+                        return $ocLazyLoad.load('./components/tareas/modificarTareas/modificarTareas.controller.js')
+                    }]
+                },
+                controller: 'controladorModificarTarea',
+                controllerAs: 'vm'
+            })
 
         $urlRouterProvider.otherwise('/main/');
-
 
     }
 })();

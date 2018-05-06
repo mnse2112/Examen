@@ -11,7 +11,8 @@
             setTarea: _setTarea,
             getTareas: _getTareas,
             updateTarea: _updateTarea,
-            getTareasPorUsuario: _getTareasPorUsuario
+            getTareasPorUsuario: _getTareasPorUsuario,
+            getTarea : _getTarea
         }
         return publicUserAPI;
 
@@ -147,6 +148,19 @@
             }
 
             return tareasLista;
+        }
+
+        function _getTarea(idTarea){
+            let listaTareas = _getTareas(),
+                tarea;
+            
+            for (let i = 0; i < listaTareas.length; i++) {
+                if(listaTareas[i].getId() == idTarea){
+                    tarea = listaTareas[i];
+                }
+            }
+
+            return tarea;
         }
 
     }
