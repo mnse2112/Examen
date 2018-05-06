@@ -9,8 +9,8 @@ class Empleado {
         this.estado = pestado;
     }
 
-    getEmpleado() {
-        return this.Empleado;
+    getEstado() {
+        return this.estado;
     }
 
     getCorreo() {
@@ -51,10 +51,6 @@ class Empleado {
         return this.nombre;
     }
 
-    getEstado() {
-        return this.estado;
-    }
-
     getFecha() {
         return this.fecha;
     }
@@ -63,13 +59,14 @@ class Empleado {
         this.nombre = pnuevoNombre;
     }
 
-    setEmpleado(pnuevoEmpleado) {
-        this.empleado = pnuevoEmpleado;
+    setEstado(pnuevoEstado) {
+        this.estado = pnuevoEstado;
     }
 
     setContrasenna(pnuevoContrasenna) {
         this.contrasenna = pnuevoContrasenna;
     }
+
     setEdad() {
         this.edad = pnuevoEdad;
     }

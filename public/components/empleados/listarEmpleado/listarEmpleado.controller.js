@@ -4,9 +4,9 @@
         .module('randajad')
         .controller('controladorlistaEmpleados', controladorlistaEmpleados);
 
-    controladorlistaEmpleados.$inject = ['$http', '$stateParams', '$state', 'servicioEmpleados'];
+    controladorlistaEmpleados.$inject = ['$window', '$http', '$stateParams', '$state', 'servicioEmpleados'];
 
-    function controladorlistaEmpleados($http, $stateParams, $state, servicioEmpleados) {
+    function controladorlistaEmpleados($window, $http, $stateParams, $state, servicioEmpleados) {
         let vm = this;
 
         vm.listaEmpleados = servicioEmpleados.getEmpleado();
@@ -17,6 +17,21 @@
 
         vm.verTareas = (idusuario) => {
             $state.go('main.listadoTareas', {idUsuario: idusuario});
+        }
+
+        vm.desactivaUsuarios = (usuario) => {
+            usuario.setEstado(false);
+
+            servicioEmpleados.updateEmpleado(usuario);
+            $window.location.reload();
+        }
+
+        vm.activaUsuarios = (usuario) => {
+            usuario.setEstado(true);
+
+            servicioEmpleados.updateEmpleado(usuario);
+            $window.location.reload();
+            
         }
 
     }

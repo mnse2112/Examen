@@ -10,7 +10,8 @@
     function servicioEmpleados($http, $log) {
         const publicUserAPI = {
             setEmpleado: _setEmpleado,
-            getEmpleado: _getEmpleado
+            getEmpleado: _getEmpleado,
+            updateEmpleado: _updateEmpleado
         }
         return publicUserAPI;
 
@@ -77,6 +78,39 @@
             }
 
             return empleadosLista;
+        }
+
+        function _updateEmpleado(userdata) {
+            let response;
+
+            let peticion = $.ajax({
+                url: 'http://localhost:4000/api/update_users',
+                type: 'put',
+                contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+                dataType: 'json',
+                async: false,
+                data: {
+                    'cedula': userdata.getCedula(),
+                    'nombre': userdata.getnombre(),
+                    'foto': userdata.getFoto(),
+                    'fecha': userdata.getFecha(),
+                    'correo': userdata.getCorreo(),
+                    'contrasenna': userdata.getContrasenna(),
+                    'estado': userdata.getEstado()
+                }
+            });
+
+            peticion.done((res) => {
+                response = res.success;
+                console.log(res.msj);
+            });
+
+            peticion.fail((error) => {
+                response = error;
+                console.log(response.error);
+            });
+
+            return response;
         }
     }
 
