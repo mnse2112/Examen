@@ -1,0 +1,43 @@
+<section style="max-width: 100%;">
+        <form ng-submit="vm.registrerTarea(vm.nuevaTarea)" name="formularioRegistroTareas" autocomplete="off" novalidate>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="txtNombreTarea">Nombre de la tarea</label>
+                    <input type="text" name="campoNombre" class="form-control" id="txtNombreTarea" ng-model="vm.nuevaTarea.nombreTarea">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="txtdescripcion">Descripción de la tarea</label>
+                    <textarea name="campoDescripcion" class="form-control" id="txtdescripcion" ng-model="vm.nuevaTarea.descripcion"></textarea>
+                </div>
+            </div>
+    
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="datFechaAsignacion">Fecha asignacion</label>
+                    <input type="date" name="campoFecha" class="form-control" id="datFechaAsignacion" ng-model="vm.nuevaTarea.fechaAsignacion">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="sltPrioridad">Prioridad</label>
+                    <select name="campoPrioridad" id="sltPrioridad" class="form-control" ng-options="prioridad as prioridad.name for prioridad in vm.prioridades track by prioridad.id"
+                        ng-model="vm.nuevaTarea.prioridad">
+                        <option value="">Seleccione una prioridad</option>
+                    </select>
+                </div>
+            </div>
+    
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="numCosto">Costo (en dólares)</label>
+                    <input type="number" name="campoFecha" class="form-control" id="numCosto" ng-model="vm.nuevaTarea.costo" min="1">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="sltPrioridad">Prioridad</label>
+                    <select name="campoPrioridad" id="sltPrioridad" class="form-control" ng-options="proyecto as proyecto.name for proyecto in vm.proyectos track by proyecto.id" ng-model="vm.nuevaTarea.idProyecto">
+                        <option value="">Seleccione un proyecto</option>
+                    </select>
+                </div>
+            </div>
+    
+            <button type="submit" class="btn btn-primary">Registrar tarea</button>
+        </form>
+    </section>
