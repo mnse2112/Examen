@@ -8,7 +8,9 @@
 
     function tareasService($http, $log) {
         const publicUserAPI = {
-           setTarea : _setTarea 
+            setTarea: _setTarea,
+            getTareas: _getTareas,
+            updateTarea: _updateTarea
         }
         return publicUserAPI;
 
@@ -16,62 +18,101 @@
             let response;
 
             let peticion = $.ajax({
-                url: 'http://localhost:3000/api/save_tarea',
+                url: 'http://localhost:4000/api/save_tarea',
                 type: 'post',
                 contentType: 'application/x-www-form-urlencoded; charset=utf-8',
                 dataType: 'json',
-                async: 'false',
-                data : {}
+                async: false,
+                data: {
+                    'nombreTarea': tareaData.getnombreTarea(),
+                    'descripcion': tareaData.getdescripcionTarea(),
+                    'fechaAsignacion': tareaData.getfechaAsignacion(),
+                    'prioridad': tareaData.getprioridad(),
+                    'estadoTarea': tareaData.getestadoTarea(),
+                    'costo': tareaData.getCosto(),
+                    'idProyecto': tareaData.getIdProyecto()
+                }
             });
 
-            peticion
+            peticion.done((res) => {
+                response = res.success;
+                console.log(res.msj);
+            });
 
+            peticion.fail((error) => {
+                response = error;
+                console.log(response.error);
+            });
 
             return response;
         }
 
-        function _getHotel() {
-            let hotelData = dataStorageFactory.getHotelData(),
-                hotelList = [];
+        function _getTareas() {
+            let tareasListTemp = [],
+                tareasLista = [];
 
-            hotelData.forEach(obj => {
-                let tempHotel = Object.assign(new Hotel(), obj);
-
-                hotelList.push(tempHotel)
+            let peticion = $.ajax({
+                url: 'http://localhost:4000/api/get_all_tareas',
+                type: 'get',
+                contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+                dataType: 'json',
+                async: false,
+                data: {}
             });
 
-            return hotelList;
-        }
+            peticion.done((res) => {
+                tareasListTemp = res;
+            });
 
-        function _updateHotel(hotelData) {
-            let hotelList = _getHotel(),
-                success;
-            success = dataStorageFactory.updateHotelData(hotelData);
-            return success;
-        }
+            peticion.fail((error) => {
+                tareasListTemp = [];
+                console.log(response.error);
+            });
 
-        function _getHotelesPorTipo(tipoHotel) {
-            let listaHoteles = _getHotel(),
-                listaFiltrada = [];
-
-            for (let i = 0; i < listaHoteles.length; i++) {
-                if (listaHoteles[i].getTipoHotel() == tipoHotel) {
-                    listaFiltrada.push(listaHoteles);
-                }
+            if (tareasListTemp != []) {
+                tareasListTemp.forEach(obj => {
+                    let tempTarea = Object.assign(new Tarea(), obj);
+                    tareasLista.push(tempTarea);
+                })
             }
-            return listaFiltrada;
+
+            return tareasLista;
         }
 
-        function _getHotelPorId(idHotel) {
-            let listaHoteles = _getHotel(),
-                hotel;
-            for (let i = 0; i < listaHoteles.length; i++) {
-                if (listaHoteles[i].getId() == idHotel) {
-                    hotel = listaHoteles[i];
+        function _updateTarea(tareaData) {
+            let response;
+
+            let peticion = $.ajax({
+                url: 'http://localhost:4000/api/update_tarea',
+                type: 'put',
+                contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+                dataType: 'json',
+                async: false,
+                data: {
+                    '_id' : tareaData.getId(),
+                    'nombreTarea': tareaData.getnombreTarea(),
+                    'descripcion': tareaData.getdescripcionTarea(),
+                    'fechaAsignacion': tareaData.getfechaAsignacion(),
+                    'prioridad': tareaData.getprioridad(),
+                    'estadoTarea': tareaData.getestadoTarea(),
+                    'costo': tareaData.getCosto(),
+                    'idProyecto': tareaData.getIdProyecto()
                 }
-            }
-            return hotel;
+            });
+
+            peticion.done((res) => {
+                response = res.success;
+                console.log(res.msj);
+            });
+
+            peticion.fail((error) => {
+                response = error;
+                console.log(response.error);
+            });
+
+            return response;
         }
+
 
     }
 })();

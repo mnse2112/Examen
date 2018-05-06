@@ -76,7 +76,7 @@ class Empleado {
 }
 
 class Tarea {
-    constructor(pid, pnombreTarea, pdescripcion, pfechaAsignacion, pprioridad, pestadoTarea, pcosto, pidproyecto) {
+    constructor(pid, pnombreTarea, pdescripcion, pfechaAsignacion, pprioridad, pestado, pcosto, pidproyecto) {
         this._id = pid;
         this.nombreTarea = pnombreTarea;
         this.descripcion = pdescripcion;
@@ -117,7 +117,27 @@ class Tarea {
     }
 
     getIdProyecto() {
-        return this.idProyecto;
+        let idProyecto = this.idProyecto,
+            nombreProyecto = '';
+
+        switch (idProyecto) {
+            case '1':
+                nombreProyecto = 'Sitio web para Tosty';
+                break;
+
+            case '2':
+                nombreProyecto = 'Aplicación web para Necrohana';
+                break;
+
+            case '3':
+                nombreProyecto = 'Lanzamiento de Sailor Moon S';
+                break;
+
+            default:
+                nombreProyecto = 'Sitio web para la película “Chancleta”';
+                break;
+        }
+        return nombreProyecto;
     }
 
     // Sets

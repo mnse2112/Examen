@@ -46,21 +46,6 @@
                 controllerAs: 'vm'
             })
 
-            .state('main.registrarTarea', {
-                url: '/registroTarea',
-                templateUrl: './components/tareas/registrarTarea/registrarTarea.view.html',
-                data: {
-                    pageTitle: 'randajad'
-                },
-                resolve: {
-                    load: ['$ocLazyLoad', ($ocLazyLoad) => {
-                        return $ocLazyLoad.load('./components/tareas/registrarTarea/registrarTarea.controller.js')
-                    }]
-                },
-                controller: 'registroTareasController',
-                controllerAs: 'vm'
-            })
-
             .state('main.listaDeEmpleados', {
                 url: '/listarEmpleados',
                 templateUrl: './components/empleados/listarEmpleado/listarEmpleado.view.html',
@@ -73,6 +58,39 @@
                     }]
                 },
                 controller: 'controladorlistaEmpleados',
+                controllerAs: 'vm'
+            })
+
+            .state('main.registrarTarea', {
+                url: '/registroTarea',
+                templateUrl: './components/tareas/registrarTarea/registrarTarea.view.html',
+                data: {
+                    pageTitle: 'randajad'
+                },
+                params: {
+                    idUsuario: ''
+                },
+                resolve: {
+                    load: ['$ocLazyLoad', ($ocLazyLoad) => {
+                        return $ocLazyLoad.load('./components/tareas/registrarTarea/registrarTarea.controller.js')
+                    }]
+                },
+                controller: 'registroTareasController',
+                controllerAs: 'vm'
+            })
+
+            .state('main.listadoTareas', {
+                url: '/listaTareas',
+                templateUrl: './components/tareas/listarTareas/listarTareas.view.html',
+                data: {
+                    pageTitle: 'randajad'
+                },
+                resolve: {
+                    load: ['$ocLazyLoad', ($ocLazyLoad) => {
+                        return $ocLazyLoad.load('./components/tareas/listarTareas/listarTareas.controller.js')
+                    }]
+                },
+                controller: 'controladorListaTareas',
                 controllerAs: 'vm'
             })
 

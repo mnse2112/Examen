@@ -1,10 +1,9 @@
 const tareaModel = require('./tarea.model');
 
 module.exports.registerTarea = (req, res) => {
-    console.log(req);
-    var newHotel = Object.assign(new tareaModel(), req.body);
+    var newTarea = Object.assign(new tareaModel(), req.body);
 
-    newHotel.save((err) => {
+    newTarea.save((err) => {
         if (err) {
             res.json({ success: false, msj: 'Ha ocurrido un error en el registro de usuarios' + err });
         } else {
@@ -14,8 +13,8 @@ module.exports.registerTarea = (req, res) => {
 };
 
 module.exports.listTareas = (req, res) => {
-    tareaModel.find().then((hotels) => {
-        res.send(hotels);
+    tareaModel.find().then((tareas) => {
+        res.send(tareas);
     });
 };
 
