@@ -1,7 +1,7 @@
 (() => {
     'use strict';
     angular
-    .module('theStation')
+    .module('randajad')
     .service('servicioImagen', servicioImagen);
   
     servicioImagen.$inject = ['$http'];
@@ -10,7 +10,7 @@
       const cloudObj = {
         url:'https://api.cloudinary.com/v1_1/dmsioqa3u/image/upload',
         data:{
-          upload_preset: 'theStation',
+          upload_preset: 'randajad',
           tags:'Any',
           context:'photo=test'
         }

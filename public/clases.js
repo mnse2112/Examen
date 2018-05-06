@@ -10,6 +10,7 @@ class Empleado {
         this.estado = pestado;
     }
 
+
     getCorreo() {
         return this.correo;
     }
@@ -47,6 +48,10 @@ class Empleado {
         this.nombre = pnuevoNombre;
     }
 
+    setEmpleado(pnuevoEmpleado){
+        this.empleado = pnuevoEmpleado;
+    }
+
     setContrasenna(pnuevoContrasenna){
         this.contrasenna = pnuevoContrasenna;
     }
@@ -55,7 +60,7 @@ class Empleado {
     }
 }
 
-class Hotel {
+class Tarea {
     constructor(pid, pnombreTarea, pdescripcion, pfechaAsignacion, pprioridad, pestadoTarea, pcosto, pnombreProyecto) {
         this._id = pid;
         this.nombreTarea = pnombreTarea;
@@ -67,6 +72,7 @@ class Hotel {
         this.nombreProyecto = pnombreProyecto;
     }
 
+    // Getters
     getId() {
         return this._id;
     }
@@ -90,6 +96,4 @@ class Hotel {
     setNombreTarea(pnuevoNombreTarea) {
         this.name = pNuevoNombreHotel;
     }
-
-    
 }

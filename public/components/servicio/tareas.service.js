@@ -1,39 +1,33 @@
 (() => {
     'use strict'
     angular
-        .module('theStation')
-        .service('ServicioHotel', ServicioHotel);
+        .module('randajad')
+        .service('tareasService', tareasService);
 
-    ServicioHotel.$inject = ['$http', '$log', 'dataStorageFactory']
+    tareasService.$inject = ['$http', '$log'];
 
-    function ServicioHotel($http, $log, dataStorageFactory) {
+    function tareasService($http, $log) {
         const publicUserAPI = {
-            setHotel: _setHotel,
-            updateHotel: _updateHotel,
-            getHotel: _getHotel,
-            getHotelesPorTipo: _getHotelesPorTipo,
-            getHotelPorId: _getHotelPorId
+           setTarea : _setTarea 
         }
         return publicUserAPI;
 
-        function _setHotel(hotelData) {
-            let hotelList = _getHotel(),
-                repeat = false,
-                success;
+        function _setTarea(tareaData) {
+            let response;
 
-            for (let i = 0; i < hotelList.length; i++) {
-                if (hotelList[i].getId() === hotelData.getId()) {
-                    repeat = true;
-                }
-            }
+            let peticion = $.ajax({
+                url: 'http://localhost:3000/api/save_tarea',
+                type: 'post',
+                contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+                dataType: 'json',
+                async: 'false',
+                data : {}
+            });
 
-            if (repeat == false) {
-                success = dataStorageFactory.setHotelData(hotelData);
-            } else {
-                success = false;
-            }
+            peticion
 
-            return success;
+
+            return response;
         }
 
         function _getHotel() {

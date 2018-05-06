@@ -1,7 +1,4 @@
 // Bootstrap
-@import "../../../node_modules/bootstrap/scss/bootstrap";
+@import "./../../../node_modules/bootstrap/scss/bootstrap";
 
 @import"./general.style";
-
-// Estilos de la aplicación
-@import "components/sidebar.style", "components/registrarCliente.style", "components/landingpage.style", "components/inicioSesion.style", "components/main.style", "components/registroHotel.style";

@@ -1,7 +1,7 @@
 (() => {
     'use strict';
     angular
-        .module('theStation')
+        .module('randajad')
         .directive('menuLateral', menuLateral);
 
     function menuLateral() {
