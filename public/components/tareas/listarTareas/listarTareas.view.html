@@ -3,6 +3,10 @@
             <div class="col-md-12 mb-5">
                 <h1 id="tituloPrincipal" class="mt-1">Lista de tareas</h1>
                 <p class="texto-muted">Lista de tareas existentes</p>
+                <label for="txtBuscar">Filtrar por proyecto</label>
+                <div class = "col-md-4">
+                <input type="text" id="txtBuscar" class="form-control" ng-model="buscarUsuario.cedula">
+                    </div>
             </div>
         </div>
         <div class="table-responsive">
@@ -20,7 +24,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="Tarea in vm.listaTareas">
+                    <tr ng-repeat="Tarea in vm.listaTareas | filter:buscarTarea">
                         <td>{{Tarea.getnombreTarea()}}</td>
                         <td>{{Tarea.getdescripcionTarea()}}</td>
                         <td>{{Tarea.getfechaAsignacion() | date:'dd MMM yyyy'}}</td>

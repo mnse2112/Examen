@@ -3,8 +3,13 @@
             <div class="col-md-12 mb-5"> 
                 <h1 id="tituloPrincipal" class="mt-1">Lista de Usuarios</h1>
                 <p class="texto-muted">Lista de empleados en Randajad</p>
+                <label for="txtBuscar">Filtrar por empleado</label>
+                <div class = "col-md-4">
+                <input type="text" id="txtBuscar" class="form-control" ng-model="buscarUsuario.cedula">
+                    </div>
             </div>
         </div>
+        
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
@@ -19,7 +24,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="usuario in vm.listaEmpleados">
+                    <tr ng-repeat="usuario in vm.listaEmpleados | filter:buscarUsuario">
                         <td><img src="{{usuario.getFoto()}}" alt="" width="200"></td>
                         <td>{{usuario.getCedula()}}</td>
                         <td>{{usuario.getnombre()}}</td>

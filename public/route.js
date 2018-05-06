@@ -97,6 +97,24 @@
                 controllerAs: 'vm'
             })
 
+            .state('main.listadoEmpleadosDeshabilitados', {
+                url: '/listaEmpleadosDeshabilitados',
+                templateUrl: './components/empleados/listarDeshabilitados/listarDeshabilitados.view.html',
+                data: {
+                    pageTitle: 'randajad'
+                },
+                params: {
+                    idUsuario: ''
+                },
+                resolve: {
+                    load: ['$ocLazyLoad', ($ocLazyLoad) => {
+                        return $ocLazyLoad.load('./components/empleados/listarDeshabilitados/listarDeshabilitados.controller.js')
+                    }]
+                },
+                controller: 'controladorlistaEmpleadosDeshabilitados',
+                controllerAs: 'vm'
+            })
+
 
         $urlRouterProvider.otherwise('/main/');
 

@@ -112,6 +112,18 @@
 
             return response;
         }
+
+        function _obtenerListaPorEstados(pestado) {
+            let listaEmpleados = _obtenerlistadeEmpleados(),
+                listaFiltrada = [];
+      
+            for(let i = 0; i < listaEmpleados.length; i++){
+              if(listaEmpleados[i].getEstado() == pestado){
+                listaFiltrada.push(listaEmpleados[i]);
+              }
+            }
+            return listaFiltrada;
+          }
     }
 
 })();
