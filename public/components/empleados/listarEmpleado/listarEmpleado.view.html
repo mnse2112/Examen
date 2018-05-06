@@ -36,6 +36,7 @@
                         <td>
                             <button class="btn btn-primary" ng-click="vm.registrarTareas(usuario.getCedula())">Agregar tarea</button>
                             <button class="btn btn-secondary" ng-click="vm.verTareas(usuario.getCedula())">Ver tareas</button>
+                            <button class="btn btn-info" ng-click="vm.modificarUsuario(usuario.getCedula())">Modificar</button>
                             <button class="btn btn-danger" ng-click="vm.desactivaUsuarios(usuario)" ng-show="{{usuario.getEstado()}}==true">Desactivar</button>
                             <button class="btn btn-success" ng-click="vm.activaUsuarios(usuario)" ng-show="{{usuario.getEstado()}}==false">Activar</button>
                         </td>

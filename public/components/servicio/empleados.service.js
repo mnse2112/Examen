@@ -11,7 +11,8 @@
         const publicUserAPI = {
             setEmpleado: _setEmpleado,
             getEmpleado: _getEmpleado,
-            updateEmpleado: _updateEmpleado
+            updateEmpleado: _updateEmpleado,
+            getUsuario : _getUsuario
         }
         return publicUserAPI;
 
@@ -116,14 +117,28 @@
         function _obtenerListaPorEstados(pestado) {
             let listaEmpleados = _obtenerlistadeEmpleados(),
                 listaFiltrada = [];
-      
-            for(let i = 0; i < listaEmpleados.length; i++){
-              if(listaEmpleados[i].getEstado() == pestado){
-                listaFiltrada.push(listaEmpleados[i]);
-              }
+
+            for (let i = 0; i < listaEmpleados.length; i++) {
+                if (listaEmpleados[i].getEstado() == pestado) {
+                    listaFiltrada.push(listaEmpleados[i]);
+                }
             }
             return listaFiltrada;
-          }
+        }
+
+        function _getUsuario(idUsuario){
+            let listaEmpleados = _getEmpleado(),
+                empleado;
+            
+            for (let i = 0; i < listaEmpleados.length; i++) {
+                if(listaEmpleados[i].getCedula() == idUsuario){
+                    empleado = listaEmpleados[i];
+                }
+            }
+
+            return empleado;
+        }
+
     }
 
 })();

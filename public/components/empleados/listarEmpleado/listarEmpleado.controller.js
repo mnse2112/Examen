@@ -19,6 +19,10 @@
             $state.go('main.listadoTareas', {idUsuario: idusuario});
         }
 
+        vm.modificarUsuario = (idusuario) => {
+            $state.go('main.modificarEmpleado', {idUsuario: idusuario});
+        }
+
         vm.desactivaUsuarios = (usuario) => {
             usuario.setEstado(false);
 

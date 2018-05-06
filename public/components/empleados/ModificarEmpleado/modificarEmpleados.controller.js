@@ -4,32 +4,25 @@
         .module('randajad')
         .controller('controladorModificarEmpleado', controladorModificarEmpleado);
 
-        controladorModificarEmpleado.$inject = ['$http', '$stateParams', '$state', 'servicioEmpleados', 'servicioImagen', 'Upload'];
+    controladorModificarEmpleado.$inject = ['$http', '$stateParams', '$state', 'servicioEmpleados', 'servicioImagen', 'Upload'];
 
     function controladorModificarEmpleado($http, $stateParams, $state, servicioEmpleados, servicioImagen, Upload) {
         const vm = this;
 
+        if(!$stateParams.idUsuario){
+            $state.go('main.listaDeEmpleados');
         }
 
-        let empleadoPorEditar = servicioEmpleados.getCedula($stateParams.cedula);
+        let idEmpleado = $stateParams.idUsuario;
 
-        vm.empleadoPorEditar = {
-            cedula : empleadoPorEditar.getCedula(),
-            nombre : empleadoPorEditar.getnombre(),
-            foto : empleadoPorEditar.getFoto(),
-            fecha : empleadoPorEditar.getFecha(),
-            correo : empleadoPorEditar.getCorreo(),
-            contrasenna : empleadoPorEditar.getContrasenna()
-        }
-
-        vm.cloudObj = servicioImagen.getConfiguration();
+        vm.empleadoPorEditar = servicioEmpleados.getUsuario(idEmpleado);
+        vm.empleadoPorEditar.fecha = new Date(vm.empleadoPorEditar.fecha);
 
         vm.modificarEmpleado = (pnuevoEmpleado) => {
-            pnuevoEmpleado._cedula = empleadoPorEditar.getCedula();
 
-            let nuevoEmpleado = Object.assign(new Empleado(), pnuevoHotel);
+            let nuevoEmpleado = Object.assign(new Empleado(), pnuevoEmpleado);
 
-            let success = ServicioEmpleado.updateEmpleado(nuevoEmpleado);
+            let success = servicioEmpleados.updateEmpleado(nuevoEmpleado);
 
             if (success == true) {
                 swal({
@@ -38,11 +31,11 @@
                     icon: "success",
                     button: "Aceptar"
                 });
-                vm.hotelPorModificar = null;
-                $state.go('main.listarEmpleados');
+                vm.empleadoPorEditar = null;
+                $state.go('main.listaDeEmpleados');
             } else {
                 swal({
-                    title: "Registro fallido",
+                    title: "Edición fallida",
                     text: "Ha ocurrido un error, inténtelo nuevamente más tarde",
                     icon: "error",
                     button: "Aceptar"
@@ -51,4 +44,5 @@
         }
 
     }
-)();
+
+})();

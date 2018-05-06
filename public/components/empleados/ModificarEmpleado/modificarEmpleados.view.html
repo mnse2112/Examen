@@ -1,0 +1,89 @@
+<section id="registroEmpleados" class="row">
+    <div class="mt-5 mb-0">
+        <div class="col-md-12 mb-5">
+            <h1 id="tituloPrincipal" class="mt-1">Editar Información</h1>
+            <p class="text-center texto-descripcion">Ingrese los datos que desee editar y presione el botón aceptar.</p>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <form ng-submit="vm.modificarEmpleado(vm.empleadoPorEditar)" name="formRegister" novalidate autocomplete="off">
+            <img src="{{vm.empleadoPorEditar.foto}}" alt="">
+
+            <div class="form-group col-md-6">
+                <label for="txtCedula">Número de cédula:</label>
+                <input type="text" class="form-control" id="txtCedula" name="campoCedula" required ng-model="vm.empleadoPorEditar.cedula"
+                    disabled required>
+                <div ng-messages="frmRegistroEmpleados.campoCedula.$error" role="alert">
+                    <div ng-message="required">
+                        <small class="form-text text-info">Este campo es requerido</small>
+                    </div>
+                    <div ng-message="pattern">
+                        <small class="form-text text-muted">Formato incorrecto</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="txtNombre">Nombre copleto:</label>
+                <input type="text" class="form-control" id="txtNombre" name="campoNombre" required pattern="[ñáéíóúA-Za-z ]+" ng-model="vm.empleadoPorEditar.nombre"
+                    required>
+                <div ng-messages="frmRegistroEmpleados.campoNombre.$error" role="alert">
+                    <div ng-message="required">
+                        <small class="form-text text-info">Este campo es requerido</small>
+                    </div>
+                    <div ng-message="pattern">
+                        <small class="form-text text-muted">Formato incorrecto</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="filePhoto">Subir fotografía</label>
+                    <input type="file" class="form-control-file" required id="filePhoto" files-input ng-model="vm.empleadoPorEditar.foto">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="txtFechaNacimiento">Fecha de nacimiento:</label>
+                    <input type="date" class="form-control" min="2000-01-02" id="txtFechaNacimiento" name="campoFechaNacimiento" required ng-model="vm.empleadoPorEditar.fecha"
+                        required>
+                    <div ng-messages="frmRegistroEmpleados.campoFechaNacimiento.$error" role="alert">
+                        <div ng-message="required">
+                            <small class="form-text text-info">Este campo es requerido</small>
+                        </div>
+                        <div ng-message="pattern">
+                            <small class="form-text text-muted">Formato incorrecto</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="form-group col-md-6">
+                    <label for="txtEmail">Correo electrónico:</label>
+                    <input type="email" class="form-control" id="txtEmail" name="campoCorreo" required ng-model="vm.empleadoPorEditar.correo"
+                        required>
+                    <div ng-messages="frmRegistroEmpleados.campoCorreo.$error" role="alert">
+                        <div ng-message="required">
+                            <small class="form-text text-info">Este campo es requerido</small>
+                        </div>
+                        <div ng-message="pattern">
+                            <small class="form-text text-muted">Formato incorrecto</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="txtEmail">Contraseña:</label>
+                    <input type="password" class="form-control" id="txtPassword" name="campoContrasenna" required ng-model="vm.empleadoPorEditar.contrasenna"
+                        required>
+                    <div ng-messages="frmRegistroEmpleados.campoCorreo.$error" role="alert">
+                        <div ng-message="required">
+                            <small class="form-text text-info">Este campo es requerido</small>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-warning"> Aceptar</button>
+            </div>
+        </form>
+    </div>
+</section>

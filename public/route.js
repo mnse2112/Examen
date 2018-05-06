@@ -115,6 +115,24 @@
                 controllerAs: 'vm'
             })
 
+            .state('main.modificarEmpleado', {
+                url: '/modificarInformación',
+                templateUrl: './components/empleados/ModificarEmpleado/modificarEmpleados.view.html',
+                data: {
+                    pageTitle: 'randajad'
+                },
+                params: {
+                    idUsuario: ''
+                },
+                resolve: {
+                    load: ['$ocLazyLoad', ($ocLazyLoad) => {
+                        return $ocLazyLoad.load('./components/empleados/ModificarEmpleado/modificarEmpleados.controller.js')
+                    }]
+                },
+                controller: 'controladorModificarEmpleado',
+                controllerAs: 'vm'
+            })
+
 
         $urlRouterProvider.otherwise('/main/');
 
