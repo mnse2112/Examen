@@ -1,0 +1,42 @@
+<section>
+        <div class="mt-5 mb-0">
+            <div class="col-md-12 mb-5"> 
+                <h1 id="tituloPrincipal" class="mt-1">Lista de Empleados Deshabilitados</h1>
+                <p class="texto-muted">Lista de empleados en Randajad deshabilitados</p>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <input type="text" id="txtBuscar" class="form-control" ng-model="buscarConvenio">
+                <thead>
+                    <tr>
+                        <th>Fotografía</th>
+                        <th>Número de cédula</th>
+                        <th>Nombre</th>
+                        <th>Fecha de nacimiento</th>
+                        <th>Edad</th>
+                        <th>Correo electrónico</th>
+                        <th>Tareas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="usuario in vm.listarUsuariosDesactivados">
+                        <td><img src="{{usuario.getFoto()}}" alt="" width="200"></td>
+                        <td>{{usuario.getCedula()}}</td>
+                        <td>{{usuario.getnombre()}}</td>
+                        <td>{{usuario.getFecha() | date:'dd MMM yyyy'}}</td>
+                        <td>{{usuario.getEdad()}}</td>
+                        <td>
+                            <a href="">{{usuario.getCorreo()}}</a>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary" ng-click="vm.registrarTareas(usuario.getCedula())">Agregar tarea</button>
+                            <button class="btn btn-secondary" ng-click="vm.verTareas(usuario.getCedula())">Ver tareas</button>
+                            <button class="btn btn-danger" ng-click="vm.desactivaUsuarios(usuario)" ng-show="{{usuario.getEstado()}}==true">Desactivar</button>
+                            <button class="btn btn-success" ng-click="vm.activaUsuarios(usuario)" ng-show="{{usuario.getEstado()}}==false">Activar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>

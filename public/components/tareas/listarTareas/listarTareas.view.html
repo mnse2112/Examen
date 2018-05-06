@@ -5,8 +5,12 @@
                 <p class="texto-muted">Lista de tareas existentes</p>
                 <label for="txtBuscar">Filtrar por proyecto</label>
                 <div class = "col-md-4">
-                <input type="text" id="txtBuscar" class="form-control" ng-model="buscarUsuario.cedula">
+                <input type="text" id="txtBuscar" class="form-control" ng-model="buscarTarea.idProyecto">
                     </div>
+                    <label for="txtBuscar">Filtrar por fecha</label>
+                    <div class = "col-md-4">
+                    <input type="text" id="txtBuscar" class="form-control" ng-model="buscarTarea.fechaAsignacion">
+                        </div>
             </div>
         </div>
         <div class="table-responsive">
@@ -33,6 +37,8 @@
                         <td>${{Tarea.getCosto()}}</td>
                         <td>{{Tarea.getIdProyecto()}}</td>
                         <td>{{Tarea.getNombreUsuario()}}</td>
+                        <td> <button class="btn btn-danger" ng-click="vm.desactivaTareas(tareas)" ng-show="{{tareas.getEstado()}}==true">Desactivar</button>
+                            <button class="btn btn-success" ng-click="vm.activaUsuarios(tareas)" ng-show="{{tareas.getEstado()}}==false">Activar</button></td>
                     </tr>
                 </tbody>
             </table>
