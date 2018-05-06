@@ -10,7 +10,8 @@
         const publicUserAPI = {
             setTarea: _setTarea,
             getTareas: _getTareas,
-            updateTarea: _updateTarea
+            updateTarea: _updateTarea,
+            getTareasPorUsuario: _getTareasPorUsuario
         }
         return publicUserAPI;
 
@@ -30,7 +31,8 @@
                     'prioridad': tareaData.getprioridad(),
                     'estadoTarea': tareaData.getestadoTarea(),
                     'costo': tareaData.getCosto(),
-                    'idProyecto': tareaData.getIdProyecto()
+                    'idProyecto': tareaData.getIdProyecto(),
+                    'idUsuario': tareaData.getIdUsuario()
                 }
             });
 
@@ -89,14 +91,15 @@
                 dataType: 'json',
                 async: false,
                 data: {
-                    '_id' : tareaData.getId(),
+                    '_id': tareaData.getId(),
                     'nombreTarea': tareaData.getnombreTarea(),
                     'descripcion': tareaData.getdescripcionTarea(),
                     'fechaAsignacion': tareaData.getfechaAsignacion(),
                     'prioridad': tareaData.getprioridad(),
                     'estadoTarea': tareaData.getestadoTarea(),
                     'costo': tareaData.getCosto(),
-                    'idProyecto': tareaData.getIdProyecto()
+                    'idProyecto': tareaData.getIdProyecto(),
+                    'idUsuario': tareaData.getIdUsuario()
                 }
             });
 
@@ -113,6 +116,38 @@
             return response;
         }
 
+        function _getTareasPorUsuario(idUsuario) {
+            let tareasListTemp = [],
+                tareasLista = [];
+
+            let peticion = $.ajax({
+                url: 'http://localhost:4000/api/get_tareas_por_usuario',
+                type: 'put',
+                contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+                dataType: 'json',
+                async: false,
+                data: {
+                    'idUsuario': idUsuario
+                }
+            });
+
+            peticion.done((res) => {
+                tareasListTemp = res;
+            });
+
+            peticion.fail((error) => {
+                tareasListTemp = [];
+            });
+
+            if (tareasListTemp != []) {
+                tareasListTemp.forEach(obj => {
+                    let tempTarea = Object.assign(new Tarea(), obj);
+                    tareasLista.push(tempTarea);
+                })
+            }
+
+            return tareasLista;
+        }
 
     }
 })();

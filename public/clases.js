@@ -9,10 +9,10 @@ class Empleado {
         this.estado = pestado;
     }
 
-    getEmpleado(){
+    getEmpleado() {
         return this.Empleado;
     }
- 
+
     getCorreo() {
         return this.correo;
     }
@@ -31,7 +31,7 @@ class Empleado {
 
 
     getEdad() {
-        let fechaNacimiento =  new Date(this.fecha);
+        let fechaNacimiento = new Date(this.fecha);
         let fechaActual = new Date()
 
         let mes = fechaActual.getMonth();
@@ -76,7 +76,7 @@ class Empleado {
 }
 
 class Tarea {
-    constructor(pid, pnombreTarea, pdescripcion, pfechaAsignacion, pprioridad, pestado, pcosto, pidproyecto) {
+    constructor(pid, pnombreTarea, pdescripcion, pfechaAsignacion, pprioridad, pestado, pcosto, pidproyecto, pidUsuario) {
         this._id = pid;
         this.nombreTarea = pnombreTarea;
         this.descripcion = pdescripcion;
@@ -85,6 +85,7 @@ class Tarea {
         this.estadoTarea = pestado;
         this.costo = pcosto;
         this.idProyecto = pidproyecto;
+        this.idUsuario = pidUsuario;
     }
 
     // Gets
@@ -138,6 +139,36 @@ class Tarea {
                 break;
         }
         return nombreProyecto;
+    }
+
+    getIdUsuario() {
+        return this.idUsuario
+    }
+
+    getNombreUsuario() {
+        let response;
+
+        let peticion = $.ajax({
+            url: 'http://localhost:4000/api/get_one_user',
+            type: 'put',
+            contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+            dataType: 'json',
+            async: false,
+            data: {
+                'cedula': this.idUsuario
+            }
+        });
+
+        peticion.done((res) => {
+            response = res;
+        });
+
+        peticion.fail((error) => {
+            response = error;
+            console.log(response.error);
+        });
+
+        return response.nombre;
     }
 
     // Sets

@@ -4,10 +4,16 @@
         .module('randajad')
         .controller('registroTareasController', registroTareasController);
 
-    registroTareasController.$inject = ['$state', 'tareasService'];
+    registroTareasController.$inject = ['$stateParams', '$state', 'tareasService'];
 
-    function registroTareasController($state, tareasService) {
+    function registroTareasController($stateParams, $state, tareasService) {
         const vm = this;
+
+        if(!$stateParams.idUsuario){
+            $state.go('main.listaDeEmpleados');
+        }
+
+        let idEmpleado = $stateParams.idUsuario;
 
         vm.prioridades = [{
             'name': 'Alta',
@@ -35,7 +41,8 @@
         }];
 
         vm.nuevaTarea = {
-            estadoTarea: 'Pendiente'
+            estadoTarea: 'Pendiente',
+            idUsuario: idEmpleado
         };
 
         vm.registrerTarea = (pnuevatarea) => {
@@ -49,7 +56,7 @@
 
             if (success == true) {
                 vm.nuevaTarea = null;
-                $state.go('main.listaTareas');
+                $state.go('main.listadoTareas');
             }
 
             console.log(success);

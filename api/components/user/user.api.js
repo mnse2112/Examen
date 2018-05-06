@@ -28,3 +28,10 @@ module.exports.updateUser = (req,res) => {
     }
   });
 };
+
+module.exports.obetenerUsuarioPorId = (req, res) => {
+  UserModel.findOne(req.body).then((user) => {
+    console.log(user);
+    res.json(user);
+  });
+};

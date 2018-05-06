@@ -22,4 +22,9 @@ router.route('/update_tarea')
     tareas.updateHotel(req,res);
 });
 
+router.route('/get_tareas_por_usuario')
+  .put((req, res) => {
+    tareas.obetenerTareasPorId(req, res);
+  });
+
 module.exports = router;

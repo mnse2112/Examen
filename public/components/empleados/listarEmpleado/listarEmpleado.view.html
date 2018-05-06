@@ -9,12 +9,13 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">Fotografía</th>
-                        <th scope="col">Número de cédula</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Fecha de nacimiento</th>
-                        <th scope="col">Edad</th>
-                        <th scope="col">Correo electrónico</th>
+                        <th>Fotografía</th>
+                        <th>Número de cédula</th>
+                        <th>Nombre</th>
+                        <th>Fecha de nacimiento</th>
+                        <th>Edad</th>
+                        <th>Correo electrónico</th>
+                        <th>Tareas</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,6 +27,10 @@
                         <td>{{usuario.getEdad()}}</td>
                         <td>
                             <a href="">{{usuario.getCorreo()}}</a>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary" ng-click="vm.registrarTareas(usuario.getCedula())">Agregar tarea</button>
+                            <button class="btn btn-secondary" ng-click="vm.verTareas(usuario.getCedula())">Ver tareas</button>
                         </td>
                     </tr>
                 </tbody>

@@ -85,6 +85,9 @@
                 data: {
                     pageTitle: 'randajad'
                 },
+                params: {
+                    idUsuario: ''
+                },
                 resolve: {
                     load: ['$ocLazyLoad', ($ocLazyLoad) => {
                         return $ocLazyLoad.load('./components/tareas/listarTareas/listarTareas.controller.js')

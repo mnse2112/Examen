@@ -9,7 +9,17 @@
     function controladorListaTareas($http, $stateParams, $state, tareasService) {
         let vm = this;
 
-        vm.listaTareas = tareasService.getTareas();
+        vm.listaTareas
+
+        if($stateParams.idUsuario){
+            listaFiltrada($stateParams.idUsuario);
+        }else{
+            vm.listaTareas = tareasService.getTareas();
+        }
+
+        function listaFiltrada(idUsuario){
+            vm.listaTareas = tareasService.getTareasPorUsuario(idUsuario);
+        }
 
     }
 })();

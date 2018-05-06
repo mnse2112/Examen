@@ -11,5 +11,13 @@
 
         vm.listaEmpleados = servicioEmpleados.getEmpleado();
 
+        vm.registrarTareas = (idusuario) => {
+            $state.go('main.registrarTarea', {idUsuario: idusuario});
+        }
+
+        vm.verTareas = (idusuario) => {
+            $state.go('main.listadoTareas', {idUsuario: idusuario});
+        }
+
     }
 })();

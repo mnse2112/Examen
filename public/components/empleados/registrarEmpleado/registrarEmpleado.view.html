@@ -44,24 +44,30 @@
                         <input type="file" class="form-control-file" required id="filePhoto" files-input ng-model="vm.nuevoEmpleado.foto">
                     </div>
                     <div class="form-group col-md-6">
-                            <label for="txtFechaNacimiento">Fecha de nacimiento:</label>
-                            <input type="date" class="form-control" id="txtFechaNacimiento" name="campoFechaNacimiento" required ng-model="vm.nuevoEmpleado.fecha"
-                                required>
-                            <div ng-messages="frmRegistroEmpleados.campoFechaNacimiento.$error" role="alert">
-                                <div ng-message="required">
-                                    <small class="form-text text-info">Este campo es requerido</small>
-                                </div>
+                        <label for="txtFechaNacimiento">Fecha de nacimiento:</label>
+                        <input type="date" class="form-control" min="2000-01-02" id="txtFechaNacimiento" name="campoFechaNacimiento" required ng-model="vm.nuevoEmpleado.fecha"
+                            required>
+                        <div ng-messages="frmRegistroEmpleados.campoFechaNacimiento.$error" role="alert">
+                            <div ng-message="required">
+                                <small class="form-text text-info">Este campo es requerido</small>
+                            </div>
+                            <div ng-message="pattern">
+                                <small class="form-text text-muted">Formato incorrecto</small>
                             </div>
                         </div>
+                    </div>
                 </div>
                 <div class="row">
-                   
+
                     <div class="form-group col-md-6">
                         <label for="txtEmail">Correo electrónico:</label>
                         <input type="email" class="form-control" id="txtEmail" name="campoCorreo" required ng-model="vm.nuevoEmpleado.correo" required>
                         <div ng-messages="frmRegistroEmpleados.campoCorreo.$error" role="alert">
                             <div ng-message="required">
                                 <small class="form-text text-info">Este campo es requerido</small>
+                            </div>
+                            <div ng-message="pattern">
+                                <small class="form-text text-muted">Formato incorrecto</small>
                             </div>
                         </div>
                     </div>
